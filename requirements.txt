@@ -1,0 +1,42 @@
+# =========================
+# OneHealth IoT Project
+# Python 3.13
+# =========================
+
+
+# Backend API
+fastapi
+uvicorn
+SQLAlchemy
+psycopg2-binary
+pydantic
+python-multipart
+
+
+# IoT MQTT
+paho-mqtt
+
+
+# Database/Data processing
+pandas
+numpy
+
+
+# Dashboard
+streamlit
+plotly
+requests
+folium
+streamlit-folium
+
+
+# Machine Learning / AI
+scikit-learn
+scipy
+joblib
+
+
+# Mobile Segnalazioni
+Flask
+pillow
+cryptography
