@@ -1,46 +1,34 @@
+# mobile_app
 
-########################DESCRIZIONE DEL COMPONENTE############################
+## Description
 
-La cartella mobile_app contiene il componente dedicato alla raccolta delle
-segnalazioni degli utenti relative a possibili anomalie ambientali.
+The `mobile_app` folder contains the component dedicated to collecting user reports of possible environmental anomalies.
 
-L'applicazione è una web app mobile-first che permette ai cittadini di inviare
-segnalazioni riguardanti la qualità delle acque, fornendo informazioni come
-tipologia del problema, descrizione, posizione geografica e immagini.
+The application is a mobile-first web app that lets citizens submit reports about water quality, providing information such as the type of issue, a description, geographic location, and images.
 
+## Features
 
-########################FUNZIONALITÀ DEL COMPONENTE############################
+- Submitting reports about environmental issues.
+- Automatic location detection via GPS.
+- Manual location entry.
+- Specifying the type of anomaly observed.
+- Indicating the severity level of the report.
+- Attaching images of the observed situation.
+- Sending the data to the backend for storage.
 
-L'applicazione permette di:
+## Component Flow
 
-- Inviare segnalazioni relative a problemi ambientali.
-- Rilevare automaticamente la posizione tramite GPS.
-- Inserire una posizione manualmente.
-- Specificare il tipo di anomalia osservata.
-- Indicare il livello di gravità della segnalazione.
-- Allegare immagini della situazione rilevata.
-- Inviare i dati al backend per la memorizzazione.
+1. The user fills out the report form.
+2. The application collects the entered data and the geographic location.
+3. The report is sent to the backend via REST API.
+4. The backend stores the report in the PostgreSQL database.
+5. The dashboard lets operators review and manage the reports.
 
+## File Structure
 
-########################FLUSSO DEL COMPONENTE#################################
+- `segnalazioni_app.py` — Mobile-first web application for collecting reports: handles the user interface, GPS acquisition, photo upload, and sending data to the backend.
 
-Il funzionamento del componente mobile è il seguente:
-
-1. L'utente compila il modulo di segnalazione.
-2. L'applicazione raccoglie i dati inseriti e la posizione geografica.
-3. La segnalazione viene inviata tramite API REST al backend.
-4. Il backend salva la segnalazione nel database PostgreSQL.
-5. La dashboard permette agli operatori di consultare e gestire le segnalazioni.
-
-
-########################STRUTTURA DEI FILE####################################
-
-segnalazioni_app.py -> Applicazione web mobile-first per la raccolta delle segnalazioni.
-                       Gestisce l'interfaccia utente, l'acquisizione GPS, il caricamento 
-                       delle foto e l'invio dei dati al backend.
-
-
-########################TECNOLOGIE UTILIZZATE#################################
+## Technologies Used
 
 - Python
 - Flask
@@ -48,10 +36,3 @@ segnalazioni_app.py -> Applicazione web mobile-first per la raccolta delle segna
 - GPS Geolocation API
 - REST API
 - PostgreSQL
-
-
-########################REPOSITORY DEL COMPONENTE##############################
-
-Repository:
-INSERIRE_LINK_GITHUB
-

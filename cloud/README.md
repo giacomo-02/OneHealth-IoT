@@ -1,51 +1,33 @@
+# cloud
 
-########################DESCRIZIONE DEL COMPONENTE############################
+## Description
 
-La cartella cloud contiene il componente responsabile della ricezione dei dati
-provenienti dalle boe IoT simulate.
+The `cloud` folder contains the component responsible for receiving data from the simulated IoT buoys.
 
-Il componente implementa un MQTT Subscriber che si collega al broker HiveMQ,
-sottoscrive i topic delle boe e acquisisce le misurazioni relative alla qualità
-dell'acqua.
+It implements an MQTT Subscriber that connects to the HiveMQ broker, subscribes to the buoys' topics, and collects the water quality measurements.
 
+## Features
 
-########################FUNZIONALITÀ DEL COMPONENTE############################
+- Connection to the public HiveMQ MQTT broker.
+- Subscription to the IoT buoys' topics.
+- Reception of environmental data published by the edge.
+- Decoding of received messages.
+- Sending data to the backend for storage in the PostgreSQL database.
 
-Il componente cloud permette di:
+## Component Flow
 
-- Collegarsi al broker MQTT pubblico HiveMQ.
-- Sottoscrivere i topic relativi alle boe IoT.
-- Ricevere i dati ambientali pubblicati dall'edge.
-- Decodificare i messaggi ricevuti.
-- Inviare i dati al backend per il salvataggio nel database PostgreSQL.
+1. The IoT buoys publish data via the MQTT protocol.
+2. The subscriber receives messages from the HiveMQ broker.
+3. The data is processed and sent to the backend.
+4. The backend stores the information in the PostgreSQL database.
 
+## File Structure
 
-########################FLUSSO DEL COMPONENTE#################################
+- `subscriber.py` — Implements the MQTT subscriber client: handles the connection to the broker, topic subscription, and reception of messages from the buoys.
 
-Il funzionamento del componente cloud è il seguente:
-
-1. Le boe IoT pubblicano i dati tramite protocollo MQTT.
-2. Il subscriber riceve i messaggi dal broker HiveMQ.
-3. I dati vengono elaborati e inviati al backend.
-4. Il backend salva le informazioni nel database PostgreSQL.
-
-
-########################STRUTTURA DEI FILE####################################
-
-subscriber.py -> Implementa il client MQTT subscriber. Gestisce la connessione al broker,
-                 la sottoscrizione ai topic e la ricezione dei messaggi provenienti dalle boe.
-
-
-########################TECNOLOGIE UTILIZZATE#################################
+## Technologies Used
 
 - Python
 - MQTT
 - HiveMQ Broker
 - Paho MQTT Client
-
-
-########################REPOSITORY DEL COMPONENTE##############################
-
-Repository:
-INSERIRE_LINK_GITHUB
-

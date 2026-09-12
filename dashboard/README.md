@@ -1,45 +1,35 @@
+# dashboard
 
-########################DESCRIZIONE DEL COMPONENTE############################
+## Description
 
-La cartella dashboard contiene il componente di visualizzazione del sistema
-OneHealth IoT.
+The `dashboard` folder contains the visualization component of the OneHealth-IoT system.
 
-La dashboard è sviluppata tramite Streamlit e permette di visualizzare,
-consultare e analizzare i dati raccolti dal sistema, integrando informazioni
-ambientali provenienti dalle boe IoT, dati ARPA sulla qualità delle acque e dati
-sanitari HFA/ISTAT.
+It is built with Streamlit and allows visualizing, browsing, and analyzing the data collected by the system, combining environmental information from the IoT buoys, ARPA water quality data, and HFA/ISTAT health data.
 
+## Features
 
-########################FUNZIONALITÀ DEL COMPONENTE############################
+- Visualization of environmental measurements received from the IoT buoys.
+- Browsing the historical water quality data.
+- Visualization of ARPA bathing water data.
+- Analysis of regional health data.
+- Identification of possible correlations between environmental and health data.
+- Visualization of user reports.
 
-La dashboard permette di:
+## Component Flow
 
-- Visualizzare le misurazioni ambientali ricevute dalle boe IoT.
-- Consultare lo storico dei dati relativi alla qualità dell'acqua.
-- Visualizzare i dati ARPA relativi alla balneazione.
-- Analizzare i dati sanitari territoriali.
-- Mostrare possibili correlazioni tra dati ambientali e sanitari.
-- Visualizzare le segnalazioni degli utenti.
+1. The dashboard makes REST requests to the FastAPI backend.
+2. The backend retrieves data from the PostgreSQL database.
+3. The data is processed and displayed through Streamlit components.
+4. The results can be used for environmental and health analysis.
 
+In short: dashboard -> REST request -> FastAPI backend -> SQLAlchemy query -> PostgreSQL
 
-########################FLUSSO DEL COMPONENTE#################################
+## File Structure
 
-Il funzionamento della dashboard è il seguente:
+- `dashboard.py` — Entry point of the Streamlit application: handles the UI and data visualization.
+- `api_client.py` — Module for communicating with the backend's REST API.
 
-1. La dashboard effettua richieste REST verso il backend FastAPI.
-2. Il backend recupera i dati dal database PostgreSQL.
-3. I dati vengono elaborati e visualizzati tramite componenti Streamlit.
-4. I risultati possono essere utilizzati per analisi ambientali e sanitarie.
-
-
-########################STRUTTURA DEI FILE####################################
-
-dashboard.py  -> Punto di ingresso dell'applicazione Streamlit. Gestisce l'interfaccia grafica e la visualizzazione dei dati.
-
-api_client.py -> Modulo per la comunicazione con le API REST del backend.
-
-
-########################TECNOLOGIE UTILIZZATE#################################
+## Technologies Used
 
 - Python
 - Streamlit
@@ -47,23 +37,3 @@ api_client.py -> Modulo per la comunicazione con le API REST del backend.
 - Plotly
 - Streamlit-Folium
 - REST API
-
-
-########################REPOSITORY DEL COMPONENTE##############################
-
-Repository:
-INSERIRE_LINK_GITHUB
-
-
-########################COLLEGAMENTO CON GLI ALTRI COMPONENTI##################
-
-La dashboard comunica con il backend tramite API REST:
-
-dashboard/
-        |
-        | REST API
-        ▼
-backend FastAPI
-        |
-        ▼
-PostgreSQL Database

@@ -1,46 +1,32 @@
+# edge
 
-########################DESCRIZIONE DEL COMPONENTE############################
+## Description
 
-La cartella edge contiene il componente IoT del sistema OneHealth IoT.
-Rappresenta il software eseguito sulle boe marine e si occupa della generazione,
-analisi e pubblicazione dei dati relativi alla qualità dell'acqua.
+The `edge` folder contains the IoT component of the OneHealth-IoT system. It represents the software running on the marine buoys and handles the generation, analysis, and publication of water quality data.
 
-Nel progetto sviluppato il comportamento delle boe viene simulato tramite script
-Python che generano misurazioni ambientali, calcolano un'indicazione locale sulla
-qualità dell'acqua e inviano i dati tramite protocollo MQTT.
+In this project, buoy behavior is simulated through Python scripts that generate environmental measurements, compute a local water quality indication, and send the data via the MQTT protocol.
 
+## Component Flow
 
-########################FLUSSO DEL COMPONENTE#################################
+1. Buoy configurations are loaded from `boe_config.py`.
+2. Sensor measurements are generated via `sensor_generator.py`.
+3. Environmental parameters are analyzed locally via `water_quality.py`.
+4. The buoy's full data payload is published via MQTT to the HiveMQ broker.
+5. The `cloud` component receives the published data and stores it in the system.
 
-Il funzionamento del componente edge è il seguente:
+## File Structure
 
-1. Vengono caricate le configurazioni delle boe dal file boe_config.py.
-2. Vengono generate le misurazioni dei sensori tramite sensor_generator.py.
-3. I parametri ambientali vengono analizzati localmente tramite water_quality.py.
-4. I dati completi della boa vengono pubblicati tramite MQTT verso il broker HiveMQ.
-5. Il componente cloud riceve i dati pubblicati e li salva nel sistema.
+- `main.py` — Entry point of the component, managing the buoys' main loop.
+- `boe_config.py` — Configuration of the simulated buoys and their geographic information.
+- `sensor_generator.py` — Generation of simulated environmental sensor values.
+- `water_quality.py` — Local analysis of water quality parameters.
+- `mqtt_publisher.py` — Handles data publishing via the MQTT protocol.
+- `update_boe_config.py` — Utility for updating the buoy configuration.
 
-
-########################STRUTTURA DEI FILE####################################
-
-main.py              -> Punto di ingresso del componente e gestione del ciclo principale delle boe.
-boe_config.py        -> Configurazione delle boe simulate e delle relative informazioni geografiche.
-sensor_generator.py  -> Generazione dei valori simulati dei sensori ambientali.
-water_quality.py     -> Analisi locale dei parametri della qualità dell'acqua.
-mqtt_publisher.py    -> Gestione della pubblicazione dei dati tramite protocollo MQTT.
-update_boe_config.py -> Utility per aggiornare la configurazione delle boe.
-
-
-########################TECNOLOGIE UTILIZZATE#################################
+## Technologies Used
 
 - Python
 - MQTT
 - HiveMQ Broker
 - Paho MQTT Client
-- Raspberry Pi (simulazione dispositivo edge)
-
-
-########################REPOSITORY DEL COMPONENTE##############################
-
-Repository:
-INSERIRE_LINK_GITHUB
+- Raspberry Pi (edge device simulation)

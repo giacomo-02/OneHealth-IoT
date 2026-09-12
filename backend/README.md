@@ -1,49 +1,39 @@
+# backend
 
-########################DESCRIZIONE DEL COMPONENTE############################
+## Description
 
-La cartella backend contiene il componente server-side del sistema OneHealth IoT.
+The `backend` folder contains the server-side component of the OneHealth-IoT system.
 
-Il backend è sviluppato tramite FastAPI e rappresenta il punto centrale di accesso
-ai dati raccolti dal sistema. Si occupa della gestione delle API REST, della
-comunicazione con il database PostgreSQL, della gestione dei modelli dati e
-dell'integrazione delle informazioni ambientali e sanitarie.
+It is built with FastAPI and serves as the central access point for the data collected by the system. It handles the REST API, communication with the PostgreSQL database, data model management, and the integration of environmental and health information.
 
+## Features
 
-########################FUNZIONALITÀ DEL COMPONENTE############################
+- Managing measurements coming from the IoT buoys.
+- Access to ARPA environmental data on water quality.
+- Access to HFA/ISTAT health data.
+- Managing reports submitted by users.
+- Managing operational missions.
+- Exposing the REST API used by the dashboard and the mobile application.
 
-Il backend fornisce le seguenti funzionalità principali:
+## Component Flow
 
-- Gestione delle misurazioni provenienti dalle boe IoT.
-- Accesso ai dati ambientali ARPA relativi alla qualità delle acque.
-- Accesso ai dati sanitari HFA/ISTAT.
-- Gestione delle segnalazioni inviate dagli utenti.
-- Gestione delle missioni operative.
-- Esposizione di API REST utilizzate dalla dashboard e dall'applicazione mobile.
+1. The MQTT subscriber receives data published by the IoT buoys.
+2. The data is stored in the PostgreSQL database.
+3. FastAPI exposes REST endpoints for querying and modifying the information.
+4. The dashboard and mobile application use the API to access the data.
 
+## File Structure
 
-########################FLUSSO DEL COMPONENTE#################################
+- `main.py` — Entry point of the FastAPI application and API registration.
+- `database.py` — Configuration of the PostgreSQL database connection.
+- `models/` — SQLAlchemy models representing the database tables.
+- `schemas/` — Pydantic schemas used for API validation and responses.
+- `routes/` — REST endpoints organized by application domain.
+- `services/` — Application logic and supporting services.
+- `arpa/` — Import and management of the ARPA bathing water dataset.
+- `hfa/` — Import and management of the Health For All (ISTAT) health data.
 
-Il funzionamento del componente backend è il seguente:
-
-1. Il subscriber MQTT riceve i dati pubblicati dalle boe IoT.
-2. I dati vengono salvati nel database PostgreSQL.
-3. FastAPI espone endpoint REST per interrogare e modificare le informazioni.
-4. Dashboard e applicazione mobile utilizzano le API per accedere ai dati.
-
-
-########################STRUTTURA DEI FILE####################################
-
-main.py     -> Punto di ingresso dell'applicazione FastAPI e registrazione delle API.
-database.py -> Configurazione della connessione al database PostgreSQL.
-models      -> Modelli SQLAlchemy che rappresentano le tabelle del database.
-schemas     -> Schemi Pydantic utilizzati per validazione e risposta delle API.
-routes      -> Endpoint REST suddivisi per dominio applicativo.
-services    -> Logica applicativa e servizi di supporto.
-arpa        -> Importazione e gestione del dataset ARPA relativo alla balneazione.
-hfa         -> Importazione e gestione dei dati sanitari Health For All (ISTAT).
-
-
-########################TECNOLOGIE UTILIZZATE#################################
+## Technologies Used
 
 - Python
 - FastAPI
@@ -51,9 +41,3 @@ hfa         -> Importazione e gestione dei dati sanitari Health For All (ISTAT).
 - PostgreSQL
 - Pydantic
 - Pandas
-
-
-########################REPOSITORY DEL COMPONENTE##############################
-
-Repository:
-INSERIRE_LINK_GITHUB
